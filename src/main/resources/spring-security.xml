@@ -22,15 +22,10 @@
              http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
     <http auto-config="true">
-        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')"/>
     </http>
 
-    <authentication-manager id="authenticationManager">
-        <authentication-provider>
-            <user-service>
-                <user name="guest" password="guest" authorities="ROLE_USER"/>
-                <user name="admin" password="admin" authorities="ROLE_ADMIN,ROLE_USER"/>
-            </user-service>
-        </authentication-provider>
+    <authentication-manager>
+    	<authentication-provider user-service-ref="myUserService"/>
     </authentication-manager>
 </beans:beans>
